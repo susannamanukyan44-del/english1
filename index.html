@@ -1,0 +1,842 @@
+
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>Անգլերեն բառեր</title>
+
+<style>
+:root {
+  box-sizing:border-box;
+  --bg:#f6f4ef;
+  --card:#fff;
+  --ink:#1d2433;
+  --mut:#7a8194;
+  --line:#dcd8cf;
+  --ok:#2e9e5b;
+  --okb:#dff5e8;
+  --bad:#d64545;
+  --badb:#fbe3e3;
+  --acc:#3b5bdb;
+}
+
+:root[data-theme="dark"] {
+  --bg:#14171f;
+  --card:#1e2330;
+  --ink:#eef0f6;
+  --mut:#98a0b5;
+  --line:#313850;
+  --ok:#4cc27f;
+  --okb:#1d3a2b;
+  --bad:#ef6b6b;
+  --badb:#432326;
+  --acc:#7c96ff;
+}
+
+* {box-sizing:border-box}
+
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:17px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;
+  min-height:100vh;
+  padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+}
+
+.wrap {
+  max-width:520px;
+  margin:0 auto;
+  padding:16px;
+}
+
+header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-bottom:16px;
+}
+
+header h1 {
+  font-size:18px;
+  margin:0;
+}
+
+.header-buttons {
+  display:flex;
+  gap:6px;
+}
+
+.ib {
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:var(--card);
+  color:var(--acc);
+  font-size:20px;
+  cursor:pointer;
+}
+
+.bar {
+  height:6px;
+  background:var(--line);
+  border-radius:3px;
+  overflow:hidden;
+  margin-bottom:6px;
+}
+
+.bar i {
+  display:block;
+  height:100%;
+  background:var(--acc);
+  transition:width .3s;
+}
+
+.cnt {
+  color:var(--mut);
+  font-size:14px;
+  margin-bottom:18px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.word {
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  text-align:center;
+  padding:34px 12px;
+  font-size:34px;
+  font-weight:700;
+  margin-bottom:16px;
+  word-break:break-word;
+}
+
+.opt {
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:15px 16px;
+  margin-bottom:10px;
+  border-radius:14px;
+  border:2px solid var(--line);
+  background:var(--card);
+  color:var(--ink);
+  font:inherit;
+  cursor:pointer;
+  transition:.15s;
+}
+
+.opt:active {transform:scale(.99)}
+
+.opt.ok {
+  background:var(--okb);
+  border-color:var(--ok);
+  color:var(--ok);
+  font-weight:600;
+}
+
+.opt.bad {
+  background:var(--badb);
+  border-color:var(--bad);
+  color:var(--bad);
+}
+
+.btn {
+  display:block;
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:14px;
+  background:var(--acc);
+  color:#fff;
+  font:inherit;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:14px;
+}
+
+.score {
+  text-align:center;
+  font-size:44px;
+  font-weight:800;
+  margin:6px 0;
+}
+
+.sub {
+  text-align:center;
+  color:var(--mut);
+  margin-bottom:16px;
+}
+
+.row {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 12px;
+  border-bottom:1px solid var(--line);
+  background:var(--card);
+}
+
+.row b {font-weight:600}
+.row span {color:var(--mut);text-align:right}
+.row.w b {color:var(--bad)}
+.row.r b {color:var(--ok)}
+
+.list {
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.list .row:last-child {border-bottom:0}
+
+.form {
+  display:none;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px;
+  margin-bottom:12px;
+}
+
+.form.on {display:block}
+
+.form input {
+  width:100%;
+  padding:12px;
+  margin-bottom:8px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:var(--bg);
+  color:var(--ink);
+  font:inherit;
+}
+
+h2 {
+  font-size:16px;
+  margin:18px 0 0;
+}
+
+.row.e {align-items:center}
+.row.e b {
+  flex:0 0 38%;
+  word-break:break-word;
+}
+
+.ed {
+  flex:1;
+  min-width:0;
+  padding:9px;
+  border-radius:8px;
+  border:1px solid var(--line);
+  background:var(--bg);
+  color:var(--ink);
+  font:inherit;
+  font-size:15px;
+}
+
+.empty {
+  text-align:center;
+  padding:25px;
+  color:var(--mut);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<header>
+  <h1>📘 Անգլերեն բառեր</h1>
+
+  <div class="header-buttons">
+    <button class="ib" id="lst" title="Բոլոր բառերը">📋</button>
+    <button class="ib" id="theme" title="Թեմա">🌙</button>
+    <button class="ib" id="fs" title="Ամբողջ էկրան">⛶</button>
+    <button class="ib" id="plus" title="Ավելացնել բառ">+</button>
+  </div>
+</header>
+
+<div class="form" id="form">
+  <input id="en" placeholder="Անգլերեն բառ" autocapitalize="off">
+  <input id="hy" placeholder="Հայերեն թարգմանություն">
+  <button class="btn" id="add" style="margin-top:0">Ավելացնել</button>
+</div>
+
+<div id="app"></div>
+
+</div>
+
+<script>
+
+// ԲԱՌԵՐԻ ՑԱՆԿ
+
+var BASE = [
+["admit","ընդունել"],
+["assume","ենթադրել"],
+["claim","պնդել"],
+["deny","հերքել, մերժել"],
+["predict","կանխատեսել"],
+["refuse","հրաժարվել, մերժել"],
+["suggest","առաջարկել"],
+["capable","ընդունակ, կարող"],
+["familiar","ծանոթ, հայտնի"],
+["reasonable","ողջամիտ, խելացի"],
+["achieve","հասնել (նպատակի)"],
+["afford","իրեն թույլ տալ"],
+["avoid","խուսափել"],
+["convince","համոզել"],
+["determine","որոշել, սահմանել"],
+["establish","հիմնել, հաստատել"],
+["maintain","պահպանել"],
+["provide","ապահովել, տրամադրել"],
+["accurate","ճշգրիտ, ճիշտ"],
+["crucial","վճռորոշ, չափազանց կարևոր"],
+["efficient","արդյունավետ"],
+["flexible","ճկուն"],
+["reliable","հուսալի"],
+["significant","նշանակալի, էական"],
+["temporary","ժամանակավոր"],
+["advantage","առավելություն"],
+["environment","շրջակա միջավայր"],
+["impact","ազդեցություն"],
+["purpose","նպատակ"],
+["reject","մերժել"],
+["accept","ընդունել"],
+["waste","վատնել"],
+["reasonable amount","խելամիտ գումար"],
+["saving up","գումար խնայել"],
+["can't afford","չեմ կարող իրեն թույլ տալ"],
+["landlord","տանտեր"],
+["cashpoint","բանկոմատ"],
+["in credit","հաշվին գումար ունենալ"],
+["charging","գումար գանձել"],
+["amount","քանակ"],
+["owe","պարտք լինել"],
+["miserable","թշվառ, դժբախտ"],
+["suffer from","տառապել"],
+["indicate","ցույց տալ, նշել"],
+["anger","զայրույթ"],
+["soften","մեղմացնել"],
+["cause","պատճառ"],
+["imagination","երևակայություն"],
+["relate","վերաբերել"],
+["quite","բավականին"],
+["pride","հպարտություն"],
+["rely on","հույս դնել, վստահել"],
+["early bird","առավոտյան վաղ արթնացող"],
+["mood swing","տրամադրության փոփոխություն"],
+["night owl","գիշերը ուշ քնող"],
+["owl","բու"],
+["currency","արժույթ"],
+["loan","վարկ"],
+["fees","վճարներ, գանձումներ"],
+["although","թեև, չնայած"],
+["definitely","անկասկած, հաստատ"],
+["especially","հատկապես"],
+["eventually","ի վերջո"],
+["fortunately","բարեբախտաբար"],
+["however","սակայն"],
+["instead","փոխարենը"],
+["meanwhile","միևնույն ժամանակ"],
+["therefore","հետևաբար, ուստի"],
+["hope","հույս"],
+["fog","մառախուղ"],
+["confused","շփոթված"],
+["upset","նեղացած"],
+["plural","հոգնակի"],
+["curious","հետաքրքրասեր"],
+["scared","վախեցած"],
+["towards us","դեպի մեզ"],
+["frightened","սարսափած"],
+["thirsty","ծարավ"],
+["pessimistic","հոռետես"],
+["cheer up","ուրախանալ"],
+["cheerful","կենսուրախ"],
+["moody","քմահաճ"],
+["defensive","պաշտպանողական"],
+["psychology","հոգեբանություն"],
+["lead","առաջնորդել, ղեկավարել"],
+["anxiety","անհանգստություն"],
+["prepare","պատրաստել"],
+["in advance","նախապես"],
+["rare case","հազվադեպ դեպք"],
+["deserve","արժանի լինել"],
+["thing","բան, առարկա"],
+["encourage","խրախուսել"],
+["require","պահանջել"],
+["available","հասանելի, մատչելի"],
+["obvious","ակնհայտ"],
+["attitude","վերաբերմունք"],
+["effort","ջանք"],
+["opportunity","հնարավորություն"],
+["fit","համապատասխանել (չափով)"],
+["suit","սազել"],
+["basket","զամբյուղ"],
+["receipt","անդորրագիր, չեկ"],
+["shelves","դարակներ"],
+["till","դրամարկղ"],
+["trolley","սայլակ"],
+["item","իր"],
+["debit","դեբետ"],
+["debt","պարտք"],
+["get into debt","պարտքերի մեջ ընկնել"],
+["lend money to","փող պարտք տալ"],
+["borrow from","փող պարտք վերցնել"],
+["miss","կարոտել, բաց թողնել"],
+["drop off","թողնել, իջեցնել"],
+["pull","քաշել"],
+["receive","ստանալ"],
+["catch","բռնել, հասնել"],
+["accommodation","կացարան"],
+["book online","առցանց ամրագրել"],
+["destination","նպատակակետ"],
+["B and B","նախաճաշ և գիշերակաց"],
+["reviews","կարծիքներ"],
+["weekend break","հանգստյան օրերի հանգիստ"],
+["package holiday","փաթեթային հանգիստ"],
+["picked up","վերցնել, վերցրել"],
+["testing","փորձարկում"],
+["listing","հայտարարություն"],
+["central heating","կենտրոնական ջեռուցում"],
+["switch it on","միացնել"],
+["nearest","ամենամոտ"],
+["recommend","խորհուրդ տալ"],
+["nearby","մոտակա"],
+["conversation","խոսակցություն"],
+["nearly","գրեթե"],
+["far","հեռու"],
+["to wind","ոլորվել"],
+["can't stand","տանել չեմ կարող"],
+["according to","ըստ"],
+["abroad","արտասահման"],
+["hiking","արշավ (լեռներում)"],
+["camping","արշավ (վրանով)"],
+["sightseeing","տեսարժան վայրեր այցելել"],
+["foggy","մառախլապատ"],
+["cloudy","ամպամած"],
+["depend","կախված լինել"],
+["pleasure","հաճույք"],
+["church","եկեղեցի"],
+["hire","վարձել (մարդ)"],
+["rent","վարձակալել"],
+["attentive","ուշադիր"],
+["make sure","համոզվել"],
+["to decide","որոշել"],
+["own","սեփական"],
+["by myself","ինքնուրույն"],
+["on my own","ինքնուրույն"],
+["in the end","ի վերջո"],
+["terrible","սարսափելի"],
+["go on","շարունակել"]
+];
+
+// ՊԱՀՊԱՆՎՈՂ ՏՎՅԱԼՆԵՐ
+
+var extra = [];
+var ED = {};
+
+try {
+  extra = JSON.parse(localStorage.getItem("extraWords") || "[]");
+} catch(e) {
+  extra = [];
+}
+
+try {
+  ED = JSON.parse(localStorage.getItem("editedWords") || "{}");
+} catch(e) {
+  ED = {};
+}
+
+BASE.forEach(function(w) {
+  if (ED[w[0]]) w[1] = ED[w[0]];
+});
+
+// ՀԻՄՆԱԿԱՆ ՓՈՓՈԽԱԿԱՆՆԵՐ
+
+var app = document.getElementById("app");
+var W = [];
+var order = [];
+var i = 0;
+var score = 0;
+var wrong = {};
+var locked = false;
+
+function all() {
+  return BASE.concat(extra);
+}
+
+function shuf(a) {
+  a = a.slice();
+
+  for (var k = a.length - 1; k > 0; k--) {
+    var j = Math.floor(Math.random() * (k + 1));
+    var t = a[k];
+    a[k] = a[j];
+    a[j] = t;
+  }
+
+  return a;
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, function(c) {
+    return {
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;"
+    }[c];
+  });
+}
+
+// ՊԱՀՊԱՆՈՒՄ
+
+function saveAll() {
+  ED = {};
+
+  BASE.forEach(function(w) {
+    if (w[1] !== ORIG[w[0]]) {
+      ED[w[0]] = w[1];
+    }
+  });
+
+  try {
+    localStorage.setItem("editedWords", JSON.stringify(ED));
+    localStorage.setItem("extraWords", JSON.stringify(extra));
+  } catch(e) {
+    alert("Չհաջողվեց պահպանել տվյալները։");
+  }
+}
+
+var ORIG = {};
+
+BASE.forEach(function(w) {
+  ORIG[w[0]] = w[1] === ED[w[0]] ? w[1] : w[1];
+});
+
+// ՍԿՍԵԼ ԹԵՍՏԸ
+
+function start() {
+  W = all();
+  order = shuf(W);
+  i = 0;
+  score = 0;
+  wrong = {};
+  show();
+}
+
+// ՀԱՐՑԵՐ
+
+function show() {
+
+  if (i >= order.length) {
+    done();
+    return;
+  }
+
+  locked = false;
+
+  var w = order[i];
+
+  var otherTranslations = Array.from(
+    new Set(
+      shuf(W.filter(function(x) {
+        return x[1] !== w[1];
+      })).map(function(x) {
+        return x[1];
+      })
+    )
+  ).slice(0,2);
+
+  var opts = shuf(
+    [w[1]].concat(otherTranslations)
+  );
+
+  var h =
+    '<div class="bar"><i style="width:' +
+    (i / order.length * 100) +
+    '%"></i></div>' +
+
+    '<div class="cnt">' +
+    '<span>' + (i+1) + ' / ' + order.length + '</span>' +
+    '<span>✔ ' + score + '</span>' +
+    '</div>' +
+
+    '<div class="word">' + esc(w[0]) + '</div>';
+
+  opts.forEach(function(o,n) {
+    h += '<button class="opt" data-n="' + n + '">' +
+      esc(o) + '</button>';
+  });
+
+  app.innerHTML = h;
+
+  var bs = app.querySelectorAll(".opt");
+
+  bs.forEach(function(b,n) {
+
+    b.onclick = function() {
+
+      if (locked) return;
+
+      locked = true;
+
+      if (opts[n] === w[1]) {
+        b.classList.add("ok");
+        score++;
+      } else {
+        b.classList.add("bad");
+        wrong[w[0]] = 1;
+
+        bs.forEach(function(x,m) {
+          if (opts[m] === w[1]) {
+            x.classList.add("ok");
+          }
+        });
+      }
+
+      setTimeout(function() {
+        i++;
+        show();
+      }, opts[n] === w[1] ? 700 : 1400);
+
+    };
+
+  });
+
+}
+
+// ԲՈԼՈՐ ԲԱՌԵՐԸ
+
+function list() {
+
+  var h = '<div class="list">';
+
+  all().forEach(function(w) {
+
+    h += '<div class="row ' +
+      (wrong[w[0]] ? 'w' : '') +
+      '">' +
+      '<b>' + esc(w[0]) + '</b>' +
+      '<span>' + esc(w[1]) + '</span>' +
+      '</div>';
+
+  });
+
+  h += '</div>';
+
+  return h;
+}
+
+// ԱՎԱՐՏ
+
+function done() {
+
+  var pct = order.length
+    ? Math.round(score / order.length * 100)
+    : 0;
+
+  app.innerHTML =
+    '<div class="score">' +
+    score + ' / ' + order.length +
+    '</div>' +
+
+    '<div class="sub">' + pct + '% ճիշտ պատասխան</div>' +
+
+    '<button class="btn" id="again" style="margin-top:0">' +
+    'Նորից խաղալ' +
+    '</button>' +
+
+    '<h2>Իմ բոլոր բառերը (' + all().length + ')</h2>' +
+    list();
+
+  document.getElementById("again").onclick = start;
+}
+
+// ԱՎԵԼԱՑՆԵԼ ԲԱՌ
+
+document.getElementById("plus").onclick = function() {
+  document.getElementById("form").classList.toggle("on");
+};
+
+document.getElementById("add").onclick = function() {
+
+  var e = document.getElementById("en").value.trim();
+  var a = document.getElementById("hy").value.trim();
+
+  if (!e || !a) {
+    alert("Լրացրու երկու դաշտերն էլ։");
+    return;
+  }
+
+  var exists = all().some(function(w) {
+    return w[0].toLowerCase() === e.toLowerCase();
+  });
+
+  if (exists) {
+    alert("Այս բառը արդեն կա ցանկում։");
+    return;
+  }
+
+  var newWord = [e,a];
+
+  extra.push(newWord);
+
+  saveAll();
+
+  document.getElementById("en").value = "";
+  document.getElementById("hy").value = "";
+
+  document.getElementById("form").classList.remove("on");
+
+  W = all();
+
+  if (i >= order.length) {
+    done();
+  } else {
+    var position = i + 1 +
+      Math.floor(Math.random() * (order.length - i));
+
+    order.splice(position,0,newWord);
+  }
+};
+
+// ԽՄԲԱԳՐԵԼ ԲԱՌԵՐԸ
+
+function editor() {
+
+  var h =
+    '<button class="btn" id="back" style="margin:0 0 12px">' +
+    '← Վերադառնալ' +
+    '</button>' +
+
+    '<div class="sub">Սեղմիր հայերեն թարգմանության վրա՝ այն փոխելու համար։ Փոփոխությունները պահպանվում են ինքնաշխատ։</div>' +
+
+    '<div class="list">';
+
+  all().forEach(function(w,n) {
+
+    h +=
+      '<div class="row e">' +
+      '<b>' + esc(w[0]) + '</b>' +
+      '<input class="ed" data-n="' + n +
+      '" value="' + esc(w[1]) + '">' +
+      '</div>';
+
+  });
+
+  h += '</div>';
+
+  app.innerHTML = h;
+
+  document.getElementById("back").onclick = function() {
+    if (i >= order.length) {
+      done();
+    } else {
+      show();
+    }
+  };
+
+  app.querySelectorAll(".ed").forEach(function(inp) {
+
+    inp.onchange = function() {
+
+      var w = all()[+inp.dataset.n];
+      var v = inp.value.trim();
+
+      if (v) {
+        w[1] = v;
+        saveAll();
+      } else {
+        inp.value = w[1];
+      }
+
+    };
+
+  });
+
+}
+
+document.getElementById("lst").onclick = editor;
+
+// ՄՈՒԹ ԵՎ ԲԱՑ ԹԵՄԱ
+
+var themeButton = document.getElementById("theme");
+
+var savedTheme = localStorage.getItem("theme") || "light";
+
+document.documentElement.dataset.theme = savedTheme;
+
+themeButton.textContent =
+  savedTheme === "dark" ? "☀️" : "🌙";
+
+themeButton.onclick = function() {
+
+  var next =
+    document.documentElement.dataset.theme === "dark"
+      ? "light"
+      : "dark";
+
+  document.documentElement.dataset.theme = next;
+
+  localStorage.setItem("theme",next);
+
+  themeButton.textContent =
+    next === "dark" ? "☀️" : "🌙";
+
+};
+
+// ԱՄԲՈՂՋ ԷԿՐԱՆ
+
+var fsb = document.getElementById("fs");
+var de = document.documentElement;
+
+if (!(de.requestFullscreen || de.webkitRequestFullscreen)) {
+  fsb.style.display = "none";
+}
+
+fsb.onclick = function() {
+
+  try {
+
+    if (document.fullscreenElement ||
+        document.webkitFullscreenElement) {
+
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+
+    } else {
+
+      if (de.requestFullscreen) {
+        de.requestFullscreen();
+      } else if (de.webkitRequestFullscreen) {
+        de.webkitRequestFullscreen();
+      }
+
+    }
+
+  } catch(e) {
+    console.log(e);
+  }
+
+};
+
+// ՍԿՍԵԼ
+
+start();
+
+</script>
+</body>
+</html>
